@@ -17,6 +17,9 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.0
     - name: Build
       working-directory: V2Speak
-      run: msbuild V2Speak.csproj
-    - name: Test
-      run: dir /s *.exe
+      run: msbuild V2Speak.csproj - p:Configuration=Release
+    - name: Save
+      uses: actions/upload-artifact@v1.0.0
+      with: 
+        name: main
+        path: V2Speak\bin\Release\V2Speak.exe
